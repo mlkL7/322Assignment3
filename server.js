@@ -1,3 +1,14 @@
+/*********************************************************************************
+*  WEB322 – Assignment 02
+*  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part *  of this assignment has been copied manually or electronically from any other source 
+*  (including 3rd party web sites) or distributed to other students.
+* 
+*  Name: _____Shahper Malik______ Student ID: ____160224218____ Date: _____Sep 20, 2022_____
+*
+*  Online (Cyclic) Link: 
+*
+********************************************************************************/
+
 var dataservice = require("./data-service.js");
 
 var express = require("express");
@@ -20,19 +31,43 @@ app.get("/about", function(req, res){
 });
 
 app.get("/students", function(req, res){
-    res.send("TODO: return JSON formatted string from students.json");
+    dataservice.getAllStudents()
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        res.json({message: err});
+    });
 });
 
 app.get("/intlstudents", function(req, res){
-    res.send("TODO: get all students who have isInternationalStudent==true");
+    dataservice.getInternationalStudents()
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        res.json({message: err});
+    });
 });
 
 app.get("/programs", function(req, res){
-    res.send("TODO: return JSON formatted string from programs.json");
+    dataservice.getPrograms()
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        res.json({message: err});
+    });
 });
 
 app.use(function(req, res){
     res.status(404).send("Page Not Found");
 });
 
-app.listen(HTTP_PORT, onHTTPListen);
+dataservice.initialize()
+.then(() => {
+    app.listen(HTTP_PORT, onHTTPListen);
+})
+.catch((err) => {
+    console.log("ERROR:" + err);
+});

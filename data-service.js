@@ -22,3 +22,34 @@ module.exports.initialize = function(){
         resolve();
     });
 }
+
+module.exports.getAllStudents = function(){
+    return new Promise(function(resolve, reject){
+        if (students.length == 0) {
+            reject("no results returned");
+        } else {
+            resolve(students);
+        }
+    });
+}
+
+module.exports.getInternationalStudents = function(){
+    return new Promise(function(resolve, reject){
+        var intlstudents = students.filter(elem => elem.isInternationalStudent == true);
+        if (intlstudents.length == 0) {
+            reject("no results returned");
+        } else {
+            resolve(intlstudents);
+        }
+    });
+}
+
+module.exports.getPrograms = function(){
+    return new Promise(function(resolve, reject){
+        if (programs.length == 0) {
+            reject("no results returned");
+        } else {
+            resolve(programs);
+        }
+    });
+}
