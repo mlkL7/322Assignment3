@@ -1,11 +1,12 @@
 /*********************************************************************************
 *  WEB322 – Assignment 02
-*  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part *  of this assignment has been copied manually or electronically from any other source 
+*  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part 
+*  of this assignment has been copied manually or electronically from any other source 
 *  (including 3rd party web sites) or distributed to other students.
 * 
-*  Name: _____Shahper Malik______ Student ID: ____160224218____ Date: _____Sep 20, 2022_____
+*  Name: _____Shahper Malik______ Student ID: ____160224218____ Date: _____Sep 30, 2022_____
 *
-*  Online (Cyclic) Link: 
+*  Online (Cyclic) Link: https://cloudy-polo-shirt-elk.cyclic.app/
 *
 ********************************************************************************/
 
