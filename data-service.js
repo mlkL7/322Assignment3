@@ -53,3 +53,61 @@ module.exports.getPrograms = function(){
         }
     });
 }
+
+module.exports.addStudent = function(studentData){
+    return new Promise(function(resolve, reject){
+        if (studentData.isInternationalStudent === undefined) {
+            studentData.isInternationalStudent = false;
+        } else {
+            studentData.isInternationalStudent = true;
+        }
+        var numbers = students.map(elem => +elem.studentID);
+        studentData.studentID = String(Math.max(...numbers) + 1);
+        students.push(studentData);
+        resolve();
+    });
+}
+
+module.exports.getStudentsByStatus = function(status){
+    return new Promise(function(resolve, reject){
+        var matchingStatus = students.filter(elem => elem.status == status);
+        if (matchingStatus.length == 0) {
+            reject("no results returned");
+        } else {
+            resolve(matchingStatus);
+        }
+    });
+}
+
+module.exports.getStudentsByProgramCode = function(programCode){
+    return new Promise(function(resolve, reject){
+        var matchingProgramCode = students.filter(elem => elem.program == programCode);
+        if (matchingProgramCode.length == 0){
+            reject("no results returned");
+        } else {
+            resolve(matchingProgramCode);
+        }
+    });
+}
+
+module.exports.getStudentsByExpectedCredential = function(credential){
+    return new Promise(function(resolve, reject){
+        var matchingExpectedCredential = students.filter(elem => elem.expectedCredential == credential);
+        if (matchingExpectedCredential.length == 0) {
+            reject("no results returned");
+        } else {
+            resolve(matchingExpectedCredential);
+        }
+    });
+}
+
+module.exports.getStudentById = function(sid){
+    return new Promise(function(resolve, reject){
+        var matchingID = students.find(elem => elem.studentID == sid);
+        if (matchingID === undefined) {
+            reject("no result returned");
+        } else {
+            resolve(matchingID);
+        }
+    });
+}
